@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1b5b91">
+<title>双人踩雷夺旗 · MSN 经典玩法</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">✦</div><div><h1>双人踩雷夺旗</h1><p>MINESWEEPER FLAGS · FRIENDS ONLINE</p></div></div>
+  <div id="connection" class="connection"><i></i>正在连接服务器…</div>
+</header>
+<main>
+  <section id="lobby" class="lobby panel">
+    <div class="lobby-art"><div class="mine-icon">✹</div><div><span class="kicker">CLASSIC MULTIPLAYER</span><h2>和朋友来一局</h2><p>找到地雷，拿下分数。踩雷不是结束，而是机会。</p></div></div>
+    <label class="field">你的昵称<input id="name" maxlength="18" placeholder="输入昵称" value="玩家"></label>
+    <button id="create" class="primary full">创建私人房间 <span>→</span></button>
+    <div class="or"><span>或输入朋友的房间码</span></div>
+    <div class="join-row"><input id="roomInput" maxlength="8" placeholder="例如 A7K2Q9" autocomplete="off"><button id="join" class="secondary">加入房间</button></div>
+    <p class="lobby-foot">无需注册 · 房间码邀请 · 支持断线重连</p>
+    <div id="lobbyMsg" class="message"></div>
+  </section>
+
+  <section id="game" class="hidden">
+    <div class="match-head panel">
+      <div class="room"><span class="muted-label">私人房间</span><strong id="roomCode">------</strong><button id="copy" class="icon-button" title="复制邀请信息">复制邀请</button></div>
+      <div class="scoreboard">
+        <div id="p0" class="player blue"><span class="player-dot"></span><div><small id="name0">蓝方</small><strong id="score0">0</strong><em id="online0">等待加入</em></div></div>
+        <div class="vs">VS</div>
+        <div id="p1" class="player red"><span class="player-dot"></span><div><small id="name1">红方</small><strong id="score1">0</strong><em id="online1">等待加入</em></div></div>
+      </div>
+      <button id="newRound" class="secondary hidden">再来一局</button>
+    </div>
+
+    <div class="game-layout">
+      <section class="board-panel panel">
+        <div class="board-caption"><div><span class="kicker">THE MINEFIELD</span><h2>夺旗战场</h2></div><div class="mine-counter"><span>地雷总数</span><strong>051</strong></div></div>
+        <div id="board" class="board" aria-label="16乘16踩雷棋盘"></div>
+        <div class="board-legend"><span><i class="legend-blue"></i>蓝方夺得</span><span><i class="legend-red"></i>红方夺得</span><span><i class="legend-open"></i>已探明</span></div>
+      </section>
+      <aside class="side-column">
+        <div class="turn-card panel"><span class="kicker">MATCH STATUS</span><h2 id="headline">等待玩家加入</h2><p id="subline">把房间码分享给朋友。</p><div id="turnBadge" class="turn-badge">等待开始</div></div>
+        <div class="tool-card panel"><div class="tool-title"><span class="tool-emoji">💣</span><div><h3>炸弹</h3><p>落后时可使用一次，选择中心格揭开 5×5 区域。</p></div></div><button id="bombMode" class="secondary full" disabled>选择炸弹中心</button><p id="bombHint" class="hint">仅在分数落后时可用。</p></div>
+        <div class="howto panel"><h3>游戏规则</h3><ol><li>踩中地雷：得 1 分，并继续行动。</li><li>翻开数字或空白：回合交给对手。</li><li>先找到 26 颗地雷的一方获胜。</li><li>数字代表周围 8 格的地雷数量。</li></ol></div>
+        <div id="gameMsg" class="message"></div>
+      </aside>
+    </div>
+  </section>
+</main>
+<footer>独立制作的经典双人踩雷游戏 · 断线后请使用相同浏览器和房间码恢复</footer>
+<script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+</body></html>
